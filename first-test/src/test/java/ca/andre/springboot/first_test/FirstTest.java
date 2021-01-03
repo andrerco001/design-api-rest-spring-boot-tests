@@ -1,6 +1,6 @@
 package ca.andre.springboot.first_test;
 
-import org.junit.Assert;
+import org.assertj.core.api.Assertions;
 import org.junit.Test;
 
 public class FirstTest {
@@ -15,7 +15,10 @@ public class FirstTest {
 		int result = number1 + number2;
 		
 		// verification
-		Assert.assertEquals(15, result);
+		// Assert.assertEquals(15, result);
+		// Assertions.assertThat(result).isBetween(14, 16);
+		// Assertions.assertThat(result).isEqualTo(15);
+		Assertions.assertThat(result).isGreaterThan(12);
 	}
 	
 
