@@ -1,4 +1,4 @@
-package ca.andre.springboot.first_test;
+package ca.andre.springboottest;
 
 import org.assertj.core.api.Assertions;
 import org.junit.Before;
