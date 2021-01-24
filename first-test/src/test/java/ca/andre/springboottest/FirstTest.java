@@ -1,19 +1,21 @@
 package ca.andre.springboottest;
 
 import org.assertj.core.api.Assertions;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 public class FirstTest {
 
 	Calculator calculator;
 
-	@Before
+	@BeforeEach
 	public void buildCalculator() {
 		calculator = new Calculator();
 	}
 
 	@Test
+	@DisplayName("Must sum two numbers")
 	public void mustSumTwoNumbers() {
 
 		// scenario
@@ -26,19 +28,21 @@ public class FirstTest {
 		Assertions.assertThat(result).isEqualTo(15);
 	}
 
-	@Test(expected = RuntimeException.class)
+	@Test
+	@DisplayName("shouldn't sum negative numbers")
 	public void shouldntSumNetagiveNumbers() {
 
 		// scenario
 		int num1 = -10, num2 = 5;
 
 		// execution
-		int result = calculator.sum(num1, num2);
+		org.junit.jupiter.api.Assertions.assertThrows(RuntimeException.class, () -> calculator.sum(num1, num2));
 
 		// verification
 	}
 
 	@Test
+	@DisplayName("Must subtract two numbers")
 	public void mustSubtractTwoNumbers() {
 
 		// scenario
@@ -51,6 +55,8 @@ public class FirstTest {
 		Assertions.assertThat(result).isEqualTo(5);
 	}
 
+	@Test
+	@DisplayName("Must multiply two numbers")
 	public void mustMultiplyTwoNumbers() {
 
 		// scenario
@@ -64,6 +70,7 @@ public class FirstTest {
 	}
 
 	@Test
+	@DisplayName("Must divide two numbers")
 	public void mustDivideTwoNumbers() {
 
 		// scenario
@@ -76,14 +83,15 @@ public class FirstTest {
 		Assertions.assertThat(result).isEqualTo(2);
 	}
 
-	@Test(expected = RuntimeException.class)
+	@Test
+	@DisplayName("Shouldn't divide negative numbers")
 	public void shouldntDivideNetagiveNumbers() {
 
 		// scenario
 		double num1 = 10, num2 = 0;
 
 		// execution
-		double result = calculator.division(num1, num2);
+		org.junit.jupiter.api.Assertions.assertThrows(RuntimeException.class, () -> calculator.division(num1, num2));
 
 		// verification
 	}

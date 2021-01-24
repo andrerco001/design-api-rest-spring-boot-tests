@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.assertj.core.api.Assertions;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InOrder;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class MockitoTest {
 
 	@Mock
@@ -27,14 +27,14 @@ public class MockitoTest {
 		list.add("");
 
 		Assertions.assertThat(size).isEqualTo(2);
-		
+
 		Mockito.verify(list, Mockito.times(1)).size();
 		// Mockito.verify(list, Mockito.never()).size();
-		
+
 		InOrder inOrder = Mockito.inOrder(list);
 		inOrder.verify(list).size();
 		inOrder.verify(list).add("");
-		
+
 	}
 
 }
